@@ -4,9 +4,11 @@
 #include "sendchar.h"
 #include "virtser.h"
 
-#define LP0 0 // default layer
-#define LP1 1 // symbols
-#define LP2 2 // media keys
+#define _______ KC_TRNS
+
+#define _DFT  0 // default layer
+#define _SYMB 1 // symbols
+#define _MED  2 // media keys
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* LP0: Basic layer
@@ -34,22 +36,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [LP0] = KEYMAP(  // layer 0 : default
         // left hand
-        KC_TRNS, KC_F1,   KC_F2,   KC_F3,         KC_F4,    KC_F5,   KC_F6,
-        KC_TRNS, KC_Q,    KC_L,    KC_J,          KC_P,     KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_A,    KC_R,    KC_E,          KC_N,     KC_B,
-        KC_TRNS, KC_Z,    KC_W,    KC_DOT,        KC_H,     KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, OSM(MOD_LGUI), KC_COLON,
-                                                    KC_TRNS,  KC_TRNS,
-                                                              KC_TRNS,
-                                           KC_SPC,  OSL(LP1), KC_DEL,
+        _______, KC_F1,   KC_F2,   KC_F3,         KC_F4,    KC_F5,   KC_F6,
+        _______, KC_Q,    KC_L,    KC_J,          KC_P,     _______, _______,
+        _______, KC_A,    KC_R,    KC_E,          KC_N,     KC_B,
+        _______, KC_Z,    KC_W,    KC_DOT,        KC_H,     _______, _______,
+        _______, _______, _______, OSM(MOD_LGUI), KC_COLON,
+                                                    _______,    _______,
+                                                                _______,
+                                           KC_SPC,  OSL(_SYMB), KC_DEL,
         // right hand
-             KC_F7,       KC_F8,  KC_F9,  KC_F10,   KC_F11,  KC_F12,  KC_TRNS,
-             KC_TRNS,     KC_TRNS,KC_F,   KC_U,     KC_D,    KC_K,    KC_TRNS,
-                          KC_G,   KC_S,   KC_I,     KC_T,    KC_O,    KC_TRNS,
-             KC_TRNS,     KC_V,   KC_C,   KC_Y,     KC_M,    KC_X,    KC_TRNS,
-                                  KC_ESC, OSL(LP2), KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS, KC_TRNS,
-             KC_TRNS,
+             KC_F7,       KC_F8,  KC_F9,  KC_F10,    KC_F11,  KC_F12,  _______,
+             _______,     _______,KC_F,   KC_U,      KC_D,    KC_K,    _______,
+                          KC_G,   KC_S,   KC_I,      KC_T,    KC_O,    _______,
+             _______,     KC_V,   KC_C,   KC_Y,      KC_M,    KC_X,    _______,
+                                  KC_ESC, OSL(_MED), _______, _______, _______,
+             _______, _______,
+             _______,
              KC_BSPC, OSM(MOD_LSFT), KC_RETURN
     ),
 // SYMBOLS
@@ -76,23 +78,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [LP1] = KEYMAP(
        // left hand
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_QUOT, KC_HASH, KC_UNDS, KC_BSLS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_AMPR, KC_EQL,  KC_LCBR, KC_LPRN, KC_QUES, 
-       KC_TRNS, KC_DQUO, KC_LABK, KC_TRNS, KC_LBRC, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                       KC_TRNS,KC_TRNS,
-                                               KC_TRNS,
-                               KC_TRNS,KC_TRNS,KC_TRNS,
+       _______, _______, _______, _______, _______, _______, _______,
+       _______, KC_QUOT, KC_HASH, KC_UNDS, KC_BSLS, _______, _______,
+       _______, KC_AMPR, KC_EQL,  KC_LCBR, KC_LPRN, KC_QUES, 
+       _______, KC_DQUO, KC_LABK, _______, KC_LBRC, _______, _______,
+       _______, _______, _______, _______, _______,
+                                       _______,_______,
+                                               _______,
+                               _______,_______,_______,
        // right hand
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_PLUS, KC_MINS, KC_ASTR, KC_AT,   KC_TRNS,
-                KC_GRV,  KC_RPRN, KC_RCBR, KC_SLSH, KC_TILD, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_RBRC, KC_EXLM, KC_RABK, KC_TRNS, KC_TRNS,
-                         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS,
-       KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS
+       _______, _______, _______, _______, _______, _______, _______,
+       _______, _______, KC_PLUS, KC_MINS, KC_ASTR, KC_AT,   _______,
+                KC_GRV,  KC_RPRN, KC_RCBR, KC_SLSH, KC_TILD, _______,
+       _______, _______, KC_RBRC, KC_EXLM, KC_RABK, _______, _______,
+                         _______, _______, _______, _______, _______,
+       _______, _______,
+       _______,
+       _______, _______, _______
 ),
 /* LP2 media keys and numbers
  *
@@ -117,23 +119,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [LP2] = KEYMAP(
        // left hand
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_HOME, KC_PGUP, KC_PGDN, KC_END,  KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, KC_TRNS, 
-       KC_TRNS, KC_A,    KC_B,    KC_C,    KC_D,    KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                       KC_TRNS,KC_TRNS,
-                                               KC_TRNS,
-                               KC_TRNS,KC_TRNS,KC_TRNS,
+       _______, _______, _______, _______, _______, _______, _______,
+       _______, KC_HOME, KC_PGUP, KC_PGDN, KC_END,  _______, _______,
+       _______, KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, _______, 
+       _______, KC_A,    KC_B,    KC_C,    KC_D,    _______, _______,
+       _______, _______, _______, _______, _______,
+                                       _______,_______,
+                                               _______,
+                               _______,_______,_______,
        // right hand
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_4,    KC_5,    KC_6,    KC_E,    KC_TRNS,
-                KC_TRNS, KC_1,    KC_2,    KC_3,    KC_0,    KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_7,    KC_8,    KC_9,    KC_F,    KC_TRNS,
-                         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS,
-       KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS
+       _______, _______, _______, _______, _______, _______, _______,
+       _______, _______, KC_4,    KC_5,    KC_6,    KC_E,    _______,
+                _______, KC_1,    KC_2,    KC_3,    KC_0,    _______,
+       _______, _______, KC_7,    KC_8,    KC_9,    KC_F,    _______,
+                         _______, _______, _______, _______, _______,
+       _______, _______,
+       _______,
+       _______, _______, _______
 ),
 };
 
