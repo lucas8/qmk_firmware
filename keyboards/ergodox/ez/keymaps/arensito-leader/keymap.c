@@ -10,6 +10,20 @@
 #define _SYMB 1 // symbols
 #define _MED  2 // media keys
 
+enum tap_dance_names {
+    TAP_A,
+    TAP_R,
+    TAP_K,
+    TAP_E,
+    TAP_N,
+    TAP_DOT,
+    TAP_U,
+    TAP_I,
+    TAP_O,
+    TAP_C,
+    TAP_COL,
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* DFT: Basic layer
  *
@@ -36,20 +50,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [_DFT] = KEYMAP(  // layer 0 : default
         // left hand
-        _______, KC_F1,   KC_F2,   KC_F3,         KC_F4,    KC_F5,   KC_F6,
-        _______, KC_H,    KC_J,    KC_K,          KC_L,     _______, _______,
-        _______, KC_A,    KC_R,    KC_E,          KC_N,     KC_B,
-        _______, KC_Z,    KC_W,    KC_DOT,        KC_Q,     _______, _______,
-        _______, _______, _______, OSM(MOD_LGUI), KC_COLON,
+        _______, KC_F1,     KC_F2,     KC_F3,         KC_F4,        KC_F5,   KC_F6,
+        _______, KC_H,      KC_J,      TD(TAP_K),     KC_L,         _______, _______,
+        _______, TD(TAP_A), TD(TAP_R), TD(TAP_E),     TD(TAP_N),    KC_B,
+        _______, KC_Z,      KC_W,      TD(TAP_DOT),   KC_Q,         _______, _______,
+        _______, _______,   _______,   OSM(MOD_LGUI), TD(TAP_COL),
                                                     _______,    _______,
                                                                 _______,
                                            KC_SPC,  OSL(_SYMB), KC_LEAD,
         // right hand
-             KC_F7,       KC_F8,  KC_F9,  KC_F10,    KC_F11,  KC_F12,  _______,
-             _______,     _______,KC_F,   KC_U,      KC_D,    KC_P,    _______,
-                          KC_G,   KC_S,   KC_I,      KC_T,    KC_O,    _______,
-             _______,     KC_V,   KC_C,   KC_Y,      KC_M,    KC_X,    _______,
-                                  KC_ESC, OSL(_MED), _______, _______, _______,
+             KC_F7,       KC_F8,   KC_F9,     KC_F10,    KC_F11,  KC_F12,    _______,
+             _______,     _______, KC_F,      TD(TAP_U), KC_D,    KC_P,      _______,
+                          KC_G,    KC_S,      TD(TAP_I), KC_T,    TD(TAP_O), _______,
+             _______,     KC_V,    TD(TAP_C), KC_Y,      KC_M,    KC_X,      _______,
+                                   KC_ESC,    OSL(_MED), _______, _______,   _______,
              _______, _______,
              _______,
              KC_BSPC, OSM(MOD_LSFT), KC_RETURN
@@ -140,6 +154,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 const uint16_t PROGMEM fn_actions[] = {
+};
+
+qk_tap_dance_action_t tap_dance_actions[] = {
+    [TAP_A]   = ACTION_TAP_DANCE_DOUBLE(KC_A,    UC(0x00e0)),
+    [TAP_R]   = ACTION_TAP_DANCE_DOUBLE(KC_R,    UC(0x00e8)),
+    [TAP_K]   = ACTION_TAP_DANCE_DOUBLE(KC_K,    UC(0x00ea)),
+    [TAP_E]   = ACTION_TAP_DANCE_DOUBLE(KC_E,    UC(0x00e9)),
+    [TAP_N]   = ACTION_TAP_DANCE_DOUBLE(KC_N,    UC(0x00f1)),
+    [TAP_DOT] = ACTION_TAP_DANCE_DOUBLE(KC_DOT,  KC_COMM),
+    [TAP_U]   = ACTION_TAP_DANCE_DOUBLE(KC_U,    UC(0x00f9)),
+    [TAP_I]   = ACTION_TAP_DANCE_DOUBLE(KC_I,    UC(0x00ef)),
+    [TAP_O]   = ACTION_TAP_DANCE_DOUBLE(KC_O,    UC(0x0153)),
+    [TAP_C]   = ACTION_TAP_DANCE_DOUBLE(KC_C,    UC(0x00e7)),
+    [TAP_COL] = ACTION_TAP_DANCE_DOUBLE(KC_COLN, KC_SCLN),
 };
 
 // Runs just one time when the keyboard initializes.
