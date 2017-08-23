@@ -50,20 +50,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [_DFT] = KEYMAP(  // layer 0 : default
         // left hand
-        _______, KC_F1,     KC_F2,                   KC_F3,                       KC_F4,                   KC_F5,   KC_F6,
-        _______, KC_H,      KC_J,                    TD(TAP_K),                   KC_L,                    _______, _______,
-        _______, TD(TAP_A), MT(MOD_LGUI, TD(TAP_R)), MT(MOD_LCTL, TD(TAP_E)),     MT(MOD_LALT, TD(TAP_N)), KC_B,
-        _______, KC_Z,      KC_W,                    TD(TAP_DOT),                 KC_Q,                    _______, _______,
-        _______, _______,   _______,                 OSM(MOD_LGUI),               TD(TAP_COL),
+        _______, KC_F1,     KC_F2,     KC_F3,         KC_F4,        KC_F5,   KC_F6,
+        _______, KC_H,      KC_J,      TD(TAP_K),     KC_L,         _______, _______,
+        _______, TD(TAP_A), TD(TAP_R), TD(TAP_E),     TD(TAP_N),    KC_B,
+        _______, KC_Z,      KC_W,      TD(TAP_DOT),   KC_Q,         _______, _______,
+        _______, _______,   _______,   OSM(MOD_LGUI), TD(TAP_COL),
                                                     _______,    _______,
                                                                 _______,
                                            KC_SPC,  OSL(_SYMB), KC_LEAD,
         // right hand
-             KC_F7,       KC_F8,   KC_F9,              KC_F10,                  KC_F11,             KC_F12,    _______,
-             _______,     _______, KC_F,               TD(TAP_U),               KC_D,               KC_P,      _______,
-                          KC_G,    MT(MOD_RALT, KC_S), MT(MOD_RCTL, TD(TAP_I)), MT(MOD_RGUI, KC_T), TD(TAP_O), _______,
-             _______,     KC_V,    TD(TAP_C),          KC_Y,                    KC_M,               KC_X,      _______,
-                                   KC_ESC,             OSL(_MED),               _______,            _______,   _______,
+             KC_F7,       KC_F8,   KC_F9,     KC_F10,    KC_F11,  KC_F12,    _______,
+             _______,     _______, KC_F,      TD(TAP_U), KC_D,    KC_P,      _______,
+                          KC_G,    KC_S,      TD(TAP_I), KC_T,    TD(TAP_O), _______,
+             _______,     KC_V,    TD(TAP_C), KC_Y,      KC_M,    KC_X,      _______,
+                                   KC_ESC,    OSL(_MED), _______, _______,   _______,
              _______, _______,
              _______,
              KC_BSPC, OSM(MOD_LSFT), KC_RETURN
@@ -184,6 +184,7 @@ void matrix_scan_user(void) {
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
     switch (layer) {
+      // TODO: Make this relevant to the ErgoDox EZ.
         case 1:
             ergodox_right_led_1_on();
             break;
