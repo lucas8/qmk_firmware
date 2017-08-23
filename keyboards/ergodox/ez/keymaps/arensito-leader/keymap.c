@@ -11,7 +11,7 @@
 #define _MED  2 // media keys
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-/* LP0: Basic layer
+/* DFT: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |  F1  |  F2  |  F3  |  F4  |  F5  | F6   |           |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |        |
@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
-[LP0] = KEYMAP(  // layer 0 : default
+[_DFT] = KEYMAP(  // layer 0 : default
         // left hand
         _______, KC_F1,   KC_F2,   KC_F3,         KC_F4,    KC_F5,   KC_F6,
         _______, KC_Q,    KC_L,    KC_J,          KC_P,     _______, _______,
@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, OSM(MOD_LGUI), KC_COLON,
                                                     _______,    _______,
                                                                 _______,
-                                           KC_SPC,  OSL(_SYMB), KC_DEL,
+                                           KC_SPC,  OSL(_SYMB), KC_LOCK,
         // right hand
              KC_F7,       KC_F8,  KC_F9,  KC_F10,    KC_F11,  KC_F12,  _______,
              _______,     _______,KC_F,   KC_U,      KC_D,    KC_K,    _______,
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_BSPC, OSM(MOD_LSFT), KC_RETURN
     ),
 // SYMBOLS
-/* LP1: Symbol Layer
+/* SYMB: Symbol Layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
-[LP1] = KEYMAP(
+[_SYMB] = KEYMAP(
        // left hand
        _______, _______, _______, _______, _______, _______, _______,
        _______, KC_QUOT, KC_HASH, KC_UNDS, KC_BSLS, _______, _______,
@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        _______,
        _______, _______, _______
 ),
-/* LP2 media keys and numbers
+/* MED: media keys and numbers
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
@@ -117,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
-[LP2] = KEYMAP(
+[_MED] = KEYMAP(
        // left hand
        _______, _______, _______, _______, _______, _______, _______,
        _______, KC_HOME, KC_PGUP, KC_PGDN, KC_END,  _______, _______,
@@ -140,35 +140,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 const uint16_t PROGMEM fn_actions[] = {
-    [1] = ACTION_LAYER_TAP_TOGGLE(SYMB)                // FN1 - Momentary Layer 1 (Symbols)
-};
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record)
-{
-  // We need to track keypresses in all modes, in case the user
-  // changes mode whilst pressing other keys.
-  if (record->event.pressed)
-    pressed_count++;
-  else
-    pressed_count--;
-  return true;
-}
-
-const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
-{
-  // MACRODOWN only works in this function
-
-  if (record->event.pressed) {
-    uint8_t grp = (id & GRPMASK) >> 6;
-    chord[grp] |= id;
-  }
-  else {
-    if (pressed_count == 0) {
-      send_chord();
-      chord[0] = chord[1] = chord[2] = chord[3] = 0;
-    }
-  }
-  return MACRO_NONE;
 };
 
 // Runs just one time when the keyboard initializes.
