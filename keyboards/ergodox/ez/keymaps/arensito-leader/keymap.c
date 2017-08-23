@@ -66,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    KC_ESC,    OSL(_MED), _______, _______,   _______,
              _______, _______,
              _______,
-             KC_BSPC, OSM(MOD_LSFT), KC_RETURN
+             KC_BSPC, OSM(MOD_LSFT), KC_ENT
     ),
 // SYMBOLS
 /* SYMB: Symbol Layer
