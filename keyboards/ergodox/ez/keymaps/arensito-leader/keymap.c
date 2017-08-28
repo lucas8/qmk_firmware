@@ -22,6 +22,7 @@ enum tap_dance_names {
     TAP_O,
     TAP_C,
     TAP_COL,
+    TAP_SPC,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -30,11 +31,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |  F1  |  F2  |  F3  |  F4  |  F5  | F6   |           |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   H  |   J  |   K ê|   L  |      |      |           |      |      |   F  |   U ù|   D  |   P  |        |
+ * |        |   H  |   J  |   K ê|   L  |      |      |           |      |   V  |   F  |   U ù|   D  |   P  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |   A à|   R è|   E é|   N~n|   B  |------|           |------|   G  |   S  |   I ï|   T  |   Ooe|        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   Z  |   W  |  . , |   Q  |      |      |           |      |   V  |   C ç|   Y  |   M  |   X  |        |
+ * |        |   Z  |   W  |  . , |   Q  |      |      |           |      |      |   C ç|   Y  |   M  |   X  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      | Mod4 |  : ; |                                       |Esc   | LP2  |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -55,14 +56,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, TD(TAP_A), TD(TAP_R), TD(TAP_E),     TD(TAP_N),    KC_B,
         _______, KC_Z,      KC_W,      TD(TAP_DOT),   KC_Q,         _______, _______,
         _______, _______,   _______,   OSM(MOD_LGUI), TD(TAP_COL),
-                                                    _______,    _______,
-                                                                _______,
-                                           KC_SPC,  OSL(_SYMB), KC_LEAD,
+                                                        _______,    _______,
+                                                                    _______,
+                                           TD(TAP_SPC), OSL(_SYMB), KC_LEAD,
         // right hand
              KC_F7,       KC_F8,   KC_F9,     KC_F10,    KC_F11,  KC_F12,    _______,
-             _______,     _______, KC_F,      TD(TAP_U), KC_D,    KC_P,      _______,
+             _______,     KC_V,    KC_F,      TD(TAP_U), KC_D,    KC_P,      _______,
                           KC_G,    KC_S,      TD(TAP_I), KC_T,    TD(TAP_O), _______,
-             _______,     KC_V,    TD(TAP_C), KC_Y,      KC_M,    KC_X,      _______,
+             _______,     _______, TD(TAP_C), KC_Y,      KC_M,    KC_X,      _______,
                                    KC_ESC,    OSL(_MED), _______, _______,   _______,
              _______, _______,
              _______,
@@ -74,11 +75,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   '  |   #  |   _  |   \  |      |      |           |      |      |   +  |   -  |   *  |   @  |        |
+ * |        |   '  |   #  |   _  |   \  |   ?  |      |           |      |      |   +  |   -  |   *  |   @  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   &  |   =  |   {  |   (  |   ?  |------|           |------|   `  |   )  |   }  |   /  |   ~  |        |
+ * |        |   &  |   =  |   {  |   (  |   $  |------|           |------|   `  |   )  |   }  |   /  |   ~  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   "  |   <  |   %  |   [  |      |      |           |      |      |   ]  |   !  |   >  |      |        |
+ * |        |   "  |   <  |   %  |   [  |      |      |           |      |      |   ]  |   !  |   >  |   |  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -93,8 +94,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_SYMB] = KEYMAP(
        // left hand
        _______, _______, _______, _______, _______, _______, _______,
-       _______, KC_QUOT, KC_HASH, KC_UNDS, KC_BSLS, _______, _______,
-       _______, KC_AMPR, KC_EQL,  KC_LCBR, KC_LPRN, KC_QUES, 
+       _______, KC_QUOT, KC_HASH, KC_UNDS, KC_BSLS, KC_QUES, _______,
+       _______, KC_AMPR, KC_EQL,  KC_LCBR, KC_LPRN, KC_DLR, 
        _______, KC_DQUO, KC_LABK, KC_PERC, KC_LBRC, _______, _______,
        _______, _______, _______, _______, _______,
                                        _______,_______,
@@ -104,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        _______, _______, _______, _______, _______, _______, _______,
        _______, _______, KC_PLUS, KC_MINS, KC_ASTR, KC_AT,   _______,
                 KC_GRV,  KC_RPRN, KC_RCBR, KC_SLSH, KC_TILD, _______,
-       _______, _______, KC_RBRC, KC_EXLM, KC_RABK, _______, _______,
+       _______, _______, KC_RBRC, KC_EXLM, KC_RABK, KC_PIPE, _______,
                          _______, _______, _______, _______, _______,
        _______, _______,
        _______,
@@ -168,10 +169,30 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [TAP_O]   = ACTION_TAP_DANCE_DOUBLE(KC_O,    UC(0x0153)),
     [TAP_C]   = ACTION_TAP_DANCE_DOUBLE(KC_C,    UC(0x00e7)),
     [TAP_COL] = ACTION_TAP_DANCE_DOUBLE(KC_COLN, KC_SCLN),
+    [TAP_SPC] = ACTION_TAP_DANCE_DOUBLE(KC_SPC, KC_TAB),
 };
 
 // Runs just one time when the keyboard initializes.
 void matrix_init_user(void) {
+    ergodox_right_led_1_off();
+    ergodox_right_led_2_off();
+    ergodox_right_led_3_off();
+    ergodox_right_led_1_on();
+    wait_ms(200);
+    ergodox_right_led_2_on();
+    wait_ms(200);
+    ergodox_right_led_3_on();
+    wait_ms(200);
+    ergodox_right_led_1_on();
+    wait_ms(200);
+    ergodox_right_led_2_on();
+    wait_ms(200);
+    ergodox_right_led_3_on();
+    wait_ms(200);
+    ergodox_right_led_1_on();
+    ergodox_right_led_2_on();
+    ergodox_right_led_3_on();
+    wait_ms(200);
 };
 
 // Runs constantly in the background, in a loop.
@@ -179,7 +200,6 @@ void matrix_scan_user(void) {
 
     uint8_t layer = biton32(layer_state);
 
-    ergodox_board_led_off();
     ergodox_right_led_1_off();
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
@@ -196,4 +216,4 @@ void matrix_scan_user(void) {
             break;
     }
 
-};
+}
