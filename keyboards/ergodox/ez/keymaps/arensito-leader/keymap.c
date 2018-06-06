@@ -22,7 +22,6 @@ enum tap_dance_names {
     TAP_O,
     TAP_C,
     TAP_COL,
-    TAP_SPC,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -44,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      | LP1  |      |       |      | Shift|      |
  *                                 | Space| LP1  |------|       |------| Shift|Enter |
- *                                 | Tab  |TLP1  | LEAD |       |Bck/Sp|TShift|      |
+ *                                 |      |TLP1  | Tab  |       |Bck/Sp|TShift|      |
  *                                 `--------------------'       `--------------------'
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
@@ -58,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______,   _______,   OSM(MOD_LGUI), TD(TAP_COL),
                                                         _______,    _______,
                                                                     _______,
-                                           TD(TAP_SPC), OSL(_SYMB), KC_LEAD,
+                                               KC_SPC , OSL(_SYMB), KC_TAB ,
         // right hand
              KC_F7,       KC_F8,   KC_F9,     KC_F10,    KC_F11,  KC_F12,    _______,
              _______,     KC_V,    KC_F,      TD(TAP_U), KC_D,    KC_P,      _______,
@@ -169,7 +168,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [TAP_O]   = ACTION_TAP_DANCE_DOUBLE(KC_O,    UC(0x0153)),
     [TAP_C]   = ACTION_TAP_DANCE_DOUBLE(KC_C,    UC(0x00e7)),
     [TAP_COL] = ACTION_TAP_DANCE_DOUBLE(KC_COLN, KC_SCLN),
-    [TAP_SPC] = ACTION_TAP_DANCE_DOUBLE(KC_SPC, KC_TAB),
 };
 
 // Runs just one time when the keyboard initializes.

@@ -23,7 +23,7 @@ holding-typing-releasing.
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      | LP1  |      |       |      | Shift|      |
  *                                 | Space| LP1  |------|       |------| Shift|Enter |
- *                                 | Tab  |TLP1  | LEAD |       |Bck/Sp|TShift|      |
+ *                                 |      |TLP1  | Tab  |       |Bck/Sp|TShift|      |
  *                                 `--------------------'       `--------------------'
  */
 /* LP1: Symbol Layer
