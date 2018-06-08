@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |   Z  |   W  |  . , |   Q  |      |      |           |      |      |   C ç|   Y  |   M  |   X  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      | Mod4 |  : ; |                                       |Esc   | LP2  |      |      |      |
+ *   |      |      | Ctrl | Mod4 |  : ; |                                       | Esc  | LP2  | Alt  |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
@@ -52,20 +52,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [_DFT] = KEYMAP(  // layer 0 : default
         // left hand
-        _______, KC_F1,     KC_F2,     KC_F3,         KC_F4,        KC_F5,   KC_F6,
-        _______, KC_H,      KC_J,      TD(TAP_K),     KC_L,         _______, _______,
-        _______, TD(TAP_A), TD(TAP_R), TD(TAP_E),     KC_N,         KC_B,
-        _______, FR_Z,      FR_W,      TD(TAP_DOT),   FR_Q,         _______, _______,
-        _______, _______,   _______,   OSM(MOD_LGUI), TD(TAP_COL),
+        _______, KC_F1,     KC_F2,         KC_F3,         KC_F4,        KC_F5,   KC_F6,
+        _______, KC_H,      KC_J,          TD(TAP_K),     KC_L,         _______, _______,
+        _______, TD(TAP_A), TD(TAP_R),     TD(TAP_E),     KC_N,         KC_B,
+        _______, FR_Z,      FR_W,          TD(TAP_DOT),   FR_Q,         _______, _______,
+        _______, _______,   OSM(MOD_LCTL), OSM(MOD_LGUI), TD(TAP_COL),
                                                         _______,    _______,
                                                                     _______,
                                                KC_SPC , OSL(_SYMB), KC_TAB ,
         // right hand
-             KC_F7,       KC_F8,   KC_F9,     KC_F10,    KC_F11,  KC_F12,    _______,
-             _______,     KC_V,    KC_F,      TD(TAP_U), KC_D,    KC_P,      _______,
-                          KC_G,    KC_S,      KC_I,      KC_T,    KC_O,      _______,
-             _______,     _______, TD(TAP_C), KC_Y,      FR_M,    KC_X,      _______,
-                                   KC_ESC,    OSL(_MED), _______, _______,   _______,
+             KC_F7,       KC_F8,   KC_F9,     KC_F10,    KC_F11,        KC_F12,    _______,
+             _______,     KC_V,    KC_F,      TD(TAP_U), KC_D,          KC_P,      _______,
+                          KC_G,    KC_S,      KC_I,      KC_T,          KC_O,      _______,
+             _______,     _______, TD(TAP_C), KC_Y,      FR_M,          KC_X,      _______,
+                                   KC_ESC,    OSL(_MED), OSM(MOD_LALT), _______,   _______,
              _______, _______,
              _______,
              KC_BSPC, OSM(MOD_LSFT), KC_ENT
