@@ -18,7 +18,7 @@
 enum tap_dance_names {
     TAP_A,
     TAP_R,
-    TAP_K,
+    TAP_J,
     TAP_E,
     TAP_DOT,
     TAP_U,
@@ -32,11 +32,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |  F1  |  F2  |  F3  |  F4  |  F5  | F6   |           |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   H  |   J  |   K ê|   L  |      |      |           |      |   V  |   F  |   U ù|   D  |   P  |        |
+ * |        |   Q  |   L  |   J ê|   P  |      |      |           |      |   V  |   F  |   U ù|   D  |   K  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |   A à|   R è|   E é|   N  |   B  |------|           |------|   G  |   S  |   I  |   T  |   O  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   Z  |   W  |  . , |   Q  |      |      |           |      |      |   C ç|   Y  |   M  |   X  |        |
+ * |        |   Z  |   W  |  . , |   H  |      |      |           |      |      |   C ç|   Y  |   M  |   X  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      | Ctrl | Mod4 |  : ; |                                       | Esc  | LP2  | Alt  |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -53,16 +53,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_DFT] = KEYMAP(  // layer 0 : default
         // left hand
         _______, KC_F1,     KC_F2,         KC_F3,         KC_F4,        KC_F5,   KC_F6,
-        _______, KC_H,      KC_J,          TD(TAP_K),     KC_L,         _______, _______,
+        _______, FR_Q,      KC_L,          TD(TAP_J),     KC_P,         _______, _______,
         _______, TD(TAP_A), TD(TAP_R),     TD(TAP_E),     KC_N,         KC_B,
-        _______, FR_Z,      FR_W,          TD(TAP_DOT),   FR_Q,         _______, _______,
+        _______, FR_Z,      FR_W,          TD(TAP_DOT),   KC_H,         _______, _______,
         _______, _______,   OSM(MOD_LCTL), OSM(MOD_LGUI), TD(TAP_COL),
                                                         _______,    _______,
                                                                     _______,
                                                KC_SPC , OSL(_SYMB), KC_TAB ,
         // right hand
              KC_F7,       KC_F8,   KC_F9,     KC_F10,    KC_F11,        KC_F12,    _______,
-             _______,     KC_V,    KC_F,      TD(TAP_U), KC_D,          KC_P,      _______,
+             _______,     KC_V,    KC_F,      TD(TAP_U), KC_D,          KC_K,      _______,
                           KC_G,    KC_S,      KC_I,      KC_T,          KC_O,      _______,
              _______,     _______, TD(TAP_C), KC_Y,      FR_M,          KC_X,      _______,
                                    KC_ESC,    OSL(_MED), OSM(MOD_LALT), _______,   _______,
@@ -166,7 +166,7 @@ enum custom_keycodes {
 qk_tap_dance_action_t tap_dance_actions[] = {
     [TAP_A]   = ACTION_TAP_DANCE_DOUBLE(FR_A,    FR_AGRV), // a -> à
     [TAP_R]   = ACTION_TAP_DANCE_DOUBLE(KC_R,    FR_EGRV), // r -> è
-    [TAP_K]   = ACTION_TAP_DANCE_DOUBLE(KC_K,    MC_ECRC), // k -> ê
+    [TAP_J]   = ACTION_TAP_DANCE_DOUBLE(KC_J,    MC_ECRC), // j -> ê
     [TAP_E]   = ACTION_TAP_DANCE_DOUBLE(KC_E,    FR_EACU), // e -> é
     [TAP_DOT] = ACTION_TAP_DANCE_DOUBLE(FR_DOT,  FR_COMM), // . -> ,
     [TAP_U]   = ACTION_TAP_DANCE_DOUBLE(KC_U,    FR_UGRV), // u -> ù
