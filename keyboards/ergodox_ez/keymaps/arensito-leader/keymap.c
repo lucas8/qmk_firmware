@@ -12,8 +12,8 @@
 #define _SYMB 1 // symbols
 #define _MED  2 // media keys
 
-#define FR_LABK LSFT(KC_COMM)
-#define FR_RABK LSFT(KC_DOT)
+#define FR_LABK KC_NUBS
+#define FR_RABK LSFT(FR_LABK)
 
 enum tap_dance_names {
     TAP_A,
@@ -95,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_SYMB] = KEYMAP(
        // left hand
        _______, _______, _______, _______, _______, _______, _______,
-       _______, FR_QUOT, FR_HASH, FR_UNDS, FR_BSLS, FR_QUES, _______,
+       _______, FR_APOS, FR_HASH, FR_UNDS, FR_BSLS, FR_QUES, _______,
        _______, FR_AMP,  FR_EQL,  FR_LCBR, FR_LPRN, FR_DLR, 
        _______, FR_QUOT, FR_LABK, FR_PERC, FR_LBRC, _______, _______,
        _______, _______, _______, _______, _______,
